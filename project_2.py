@@ -89,9 +89,14 @@ def request_word(word):
         res = r.json() 
         for v in res:
             if TITLE_STATUS in v:
-                s = v[TITLE_STATUS][0]['@value']
-                if strip(s) in status_list:
-                    return s
+                status = v[TITLE_STATUS][0]['@value']
+                if strip(status) in status_list:
+                    return status
+
+        for status in status_list:
+            if status in strip(word):
+                return status 
+
         return None
 
     except Exception as e:
