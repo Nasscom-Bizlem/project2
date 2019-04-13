@@ -191,6 +191,8 @@ def process_table(table, global_status):
             if is_int(table[col].iloc[0]):
                 label_so = col
                 break
+    else:
+        table.columns = table.iloc[0]
 
     results = []
     for i in range(height):
@@ -274,5 +276,5 @@ def p2_process(path, verbose=True):
     return temp_json
 
 if __name__ == '__main__':
-    r = p2_process('../data/p2materials/p24.html')
+    r = p2_process('../data/p2materials/p28.html')
     print(json.dumps(r, indent=2))
